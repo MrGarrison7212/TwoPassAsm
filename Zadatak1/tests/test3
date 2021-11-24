@@ -1,0 +1,21 @@
+.global a, c, g
+.extern b
+.equ n, 0x20
+.data
+b:
+	.word a-f, f+d
+	.byte a, f-3
+.text
+d:	movw 	20, r2
+f:	xchgw	c, 2
+	movw	&n, e
+	movw	a, e, 0
+	movw	a, g
+	movw	a, h
+.section .text1
+	movw	c, r2
+a:	addw	r1, r2
+e:	heil
+.bss
+c:	.skip 	a
+.end

@@ -1,0 +1,17 @@
+.global a, c
+.equ n, 0x20
+.data
+	.skip 	8
+	.word a-e, f-d, a+3, f+n, n, a, f, 0x10, n-3, 3+4
+	.byte n, n-3, 0x40, 3+4
+.text
+d:	movw 	r2, 20
+f:	movw	c, r2
+	movw	r2, e
+.section .text1
+	movw	c, r2
+a:	addw	r1, r2
+e:	haltb
+.bss
+c:	.skip 	8
+.end

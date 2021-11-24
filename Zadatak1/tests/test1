@@ -1,0 +1,24 @@
+.global a, c, f
+.extern b
+.text
+	jeqw	a
+	jeqw	$a
+	jeqw	e
+	jeqw	$e
+	jeqw	$d
+	movw b, pc[d]
+	jeqw	d
+	jeqw	$f
+	jeqw	f
+d:	movw 	r2, 20
+f:	movw	c, r2
+	movw	r2, e
+.section .text1
+	movw	c, r2
+a:	addw	r1, r2
+e:	haltb	
+.data
+.skip 	8
+.bss
+c:	.skip 	8
+.end
